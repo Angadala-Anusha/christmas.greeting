@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Page</title>
+    <style>
+        body {
+            background: url('myimg1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        .christmas-tree {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20%;
+            height: auto;
+        }
+
+        .santa {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 25%;
+            height: auto;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .christmas-text {
+            font-size: 3em;
+            font-weight: bold;
+            color: gold;
+            font-family: 'Serif', serif;
+            text-shadow: 2px 2px 4px #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 4px #000, 0 0 10px gold, 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px gold, 0 0 60px gold, 0 0 70px gold;
+            }
+            to {
+                text-shadow: 2px 2px 4px #000, 0 0 20px gold, 0 0 30px gold, 0 0 40px gold, 0 0 50px gold, 0 0 60px gold, 0 0 70px gold, 0 0 80px gold;
+            }
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 50px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="christmas-text">HAPPY CHRISTMAS 2025</div>
+    <img src="myimg2.jpg" alt="Santa Claus" class="santa">
+    <div class="footer-text">TO AIML DEPARTMENT</div>
+    <audio id="sound.mp3" autoplay loop muted>
+        <source src="sound.mp3" type="soun">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.width = snowflake.style.height = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+
+        setInterval(createSnowflake, 200);
+
+        // Unmute audio after user interaction
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('background-audio');
+            audio.muted = false;
+        });
+    </script>
+</body>
+</html>
